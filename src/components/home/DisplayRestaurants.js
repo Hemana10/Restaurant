@@ -1,9 +1,16 @@
 import { Fragment } from 'react';
 import { ShimmerSimpleGallery } from 'react-shimmer-effects';
+import { useNavigate } from 'react-router-dom';
 
 import rating from '../../assets/images/rating.png';
 
 const DisplayRestaurant = ({ restaurantList }) => {
+
+    const navigate = useNavigate();
+
+    const cardClick = (id) => {
+        navigate(`/restaurants/${id}`);
+    };
 
     const renderRestaurantList = restaurantList?.map((restaurant, index) => {
         const { id, name, avgRating, sla,
@@ -13,7 +20,8 @@ const DisplayRestaurant = ({ restaurantList }) => {
 
         return (
             <div key={`${id}${index}`}
-                className="hover:cursor-pointer hover:shadow-2xl rounded-xl">
+                className="hover:cursor-pointer hover:shadow-2xl rounded-xl" 
+                onClick={() => cardClick(id)}>
                 <div className="flex items-center justify-center">
                     <img src={img} alt={name}
                         className="w-11/12 h-60 rounded-3xl py-3" />
@@ -35,7 +43,7 @@ const DisplayRestaurant = ({ restaurantList }) => {
     return (
         <Fragment>
             {(renderRestaurantList?.length) ?
-                <div className="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
                     {renderRestaurantList}
                 </div> :
                 <ShimmerSimpleGallery id='display-resraurant' card imageHeight={240} col={4} caption rounded={true} />}

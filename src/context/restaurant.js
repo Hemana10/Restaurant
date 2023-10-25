@@ -20,7 +20,7 @@ const Provider = ({ children }) => {
             let res = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9358189&lng=77.6178125&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING');
             if (res.ok) {
                 res = await res.json();
-                extractRestaurantDetails(res.data.cards);
+                extractRestaurantListDetails(res.data.cards);
             } else {
                 setError(`Error ${res.status}`);
             }
@@ -29,7 +29,7 @@ const Provider = ({ children }) => {
         }
     };
 
-    const extractRestaurantDetails = (response) => {
+    const extractRestaurantListDetails = (response) => {
         let restaurants = response.reduce((restaurants, card) => {
             if (card.card.card['@type'] === 'type.googleapis.com/swiggy.gandalf.widgets.v2.GridWidget' && card.card.card.gridElements.infoWithStyle['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle') {
                 return [...restaurants, ...card.card.card.gridElements.infoWithStyle?.restaurants];
