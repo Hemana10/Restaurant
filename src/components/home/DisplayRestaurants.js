@@ -20,7 +20,7 @@ const DisplayRestaurant = ({ restaurantList }) => {
 
         return (
             <div key={`${id}${index}`}
-                className="hover:cursor-pointer hover:shadow-2xl rounded-xl" 
+                className="hover:cursor-pointer hover:shadow-2xl rounded-xl"
                 onClick={() => cardClick(id)}>
                 <div className="flex items-center justify-center">
                     <img src={img} alt={name}
@@ -43,7 +43,7 @@ const DisplayRestaurant = ({ restaurantList }) => {
     return (
         <Fragment>
             {(renderRestaurantList?.length) ?
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
                     {renderRestaurantList}
                 </div> :
                 <ShimmerSimpleGallery id='display-resraurant' card imageHeight={240} col={4} caption rounded={true} />}

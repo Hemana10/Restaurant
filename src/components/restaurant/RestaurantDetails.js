@@ -15,14 +15,13 @@ const RestaurantDetails = () => {
             try {
                 dispatch(setLoadingState(true));
                 let response = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.8758713&lng=77.66363439999999&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`);
-                if(response.ok) {
+                if (response.ok) {
                     response = await response.json();
                     extractRestaurantDetails(response);
                 } else {
                     dispatch(setErrorState({ errorStatus: true, errorMsg: `Error ${response.status}` }));
                 }
-                console.log(resbody);
-            } catch(error) {
+            } catch (error) {
                 dispatch(setErrorState({ errorStatus: true, errorMsg: 'Something went wrong, please try later' }));
             }
         }

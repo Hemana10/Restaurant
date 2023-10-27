@@ -13,7 +13,7 @@ function Header() {
                     <img src={logo} alt='logo' className='h-16' />
                     <Search />
                 </div>
-                <div className='col-span-6 items-center justify-end flex'>
+                <div className='col-span-6 items-center justify-end flex text-purplelake text-bold text-base'>
                     <Link className='px-3'
                         to="/home" >Home
                     </Link>
