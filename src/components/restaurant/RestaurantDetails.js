@@ -34,8 +34,8 @@ const RestaurantDetails = () => {
         const restaurantInfo = response.data.cards[0].card.card.info;
         dispatch(setRestaurantDetails({
             restaurantInfo,
-            menuDetails,
-            offerDetails
+            offerDetails,
+            menuDetails
         }));
     };
 

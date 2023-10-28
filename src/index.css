@@ -43,3 +43,11 @@
   height: 50px;
   padding-left: 15px !important;
 }
+
+.bottom-neg-9p {
+  bottom: -9%;
+}
+
+.right-30p {
+  right: 30%;
+}
