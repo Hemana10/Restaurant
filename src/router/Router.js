@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
-import NotFound from '../components/miscellaneous/NotFound';
+import NotFound from '../shared/NotFound';
 
 const Home = lazy(() => import('../components/home/Home'));
 const AboutUs = lazy(() => import('../components/header/AboutUs'));

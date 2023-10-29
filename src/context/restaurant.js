@@ -1,7 +1,5 @@
 import { createContext, useEffect, useState, useRef } from 'react';
 
-import ErrorPage from '../components/miscellaneous/ErrorPage';
-
 export const RestaurantContext = createContext();
 
 const Provider = ({ children }) => {

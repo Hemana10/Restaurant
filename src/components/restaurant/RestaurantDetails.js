@@ -12,7 +12,7 @@ const RestaurantDetails = () => {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [id]);
 
     const fetchData = async () => {
         try {

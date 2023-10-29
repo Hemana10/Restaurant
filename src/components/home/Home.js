@@ -1,6 +1,6 @@
 import DisplayRestaurant from './DisplayRestaurants';
 import useRestaurantContext from '../../custom-hooks/useRestaurantContext';
-import ErrorPage from '../miscellaneous/ErrorPage';
+import ErrorPage from '../../shared/ErrorPage';
 
 import { Fragment } from 'react';
 

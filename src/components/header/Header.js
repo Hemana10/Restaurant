@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import logo from '../../assets/images/food-logo.png';
 import SignIn from './SignIn';
-import Search from './Search';
+import Search from './search/Search';
 
 function Header() {
     const navigate = useNavigate();

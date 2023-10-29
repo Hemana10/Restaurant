@@ -1,7 +1,7 @@
 import React from 'react';
 import { Fragment } from 'react';
 
-import ErrorPage from '../miscellaneous/ErrorPage';
+import ErrorPage from '../../shared/ErrorPage';
 import instaLogo from '../../assets/images/insta-icon.png';
 import twitterLogo from '../../assets/images/twitter-icon.png';
 import fbLogo from '../../assets/images/fb-icon.png';

@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import { ShimmerPostDetails } from "react-shimmer-effects";
 
-import ErrorPage from '../miscellaneous/ErrorPage';
+import ErrorPage from '../../shared/ErrorPage';
 import CategorySection from './CategorySection';
 import BackToTop from '../../shared/BackToTop';
 import OffersSection from './OffersSection';

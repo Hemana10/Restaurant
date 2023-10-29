@@ -1,11 +1,12 @@
 import { Fragment, useState, useEffect } from 'react';
 
-import useRestaurantContext from '../../custom-hooks/useRestaurantContext';
+import useRestaurantContext from '../../../custom-hooks/useRestaurantContext';
+import SearchDropDown from './SearchDropDown';
 
 const Search = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
-    const { setRestaurantList, originalRestaurantList } = useRestaurantContext();
+    const {restaurantList,  setRestaurantList, originalRestaurantList } = useRestaurantContext();
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
@@ -42,6 +43,8 @@ const Search = () => {
         <Fragment>
             <input type='text' placeholder='Search Resturant or Dish'
                 value={searchTerm} onChange={handleChange} className='ml-4 search' />
+            <SearchDropDown searchTerm={searchTerm} restaurantList={restaurantList}
+             setSearchTerm={setSearchTerm}/>
         </Fragment>
     );
 };
