@@ -8,7 +8,7 @@ const CategorySection = ({ categoryTitle, categoryList, itemAccordionView }) => 
     const renderCategoryList = categoryList.map((category, index) => {
         const { title, itemCards } = category;
         return (
-            <Fragment>
+            <Fragment key={title}>
                 <Accordion title={`${title} (${itemCards.length})`}
                     open={itemAccordionView ? true : false}
                     titleClass={itemAccordionView ? 'text-purplelake text-lg font-bold' : 'text-purplelake font-semibold'}>

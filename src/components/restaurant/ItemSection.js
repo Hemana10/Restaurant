@@ -3,13 +3,14 @@ import { Fragment } from "react";
 const ItemSection = ({ itemsList }) => {
 
     const renderItemList = itemsList.map((item, index) => {
-        const { name, description, price, imageId, inStock, isVeg } = item?.card?.info || {};
+        const { name, description, price, imageId } = item?.card?.info || {};
+        // inStock, isVeg
         return (
-            <div>
+            <div key={`${name}${index}`}>   
                 <div className="grid grid-cols-8 mb-4 mt-4">
                     <div className="col-span-6 flex flex-col">
                         <span className="text-purplelake font-semibold mb-1">{name}</span>
-                        <span className="mb-3 text-sm">₹ {price / 100}</span>
+                        {price && <span className="mb-3 text-sm">₹ {price / 100}</span>}
                         <span className="text-gray-400 text-sm">{description}</span>
                     </div>
                     <div className="col-span-2 flex items-center justify-end mr-5 mb-3">

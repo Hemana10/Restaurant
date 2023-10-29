@@ -51,3 +51,11 @@
 .right-30p {
   right: 30%;
 }
+
+.slick-list {
+  margin: -1px -5px;
+}
+
+.slick-slide>div {
+  padding: 1px 5px;
+}

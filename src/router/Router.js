@@ -9,6 +9,7 @@ const ContactUs = lazy(() => import('../components/header/ContactUs'));
 const RestaurantDetails = lazy(() => import('../components/restaurant/RestaurantDetails'));
 
 function Router() {
+
     // Routing Rules
     return (
         <Routes>
@@ -19,7 +20,8 @@ function Router() {
             <Route path="/contact"
                 element={<Suspense><ContactUs /></Suspense>} />
             <Route path="/restaurants/:id"
-                element={<Suspense><RestaurantDetails /></Suspense>} />
+                element={
+                <Suspense><RestaurantDetails /></Suspense>}/>
             <Route path='/' element={<Navigate to='/home' />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
