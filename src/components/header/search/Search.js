@@ -7,7 +7,7 @@ import useSearchDebounce from '../../../custom-hooks/useSearchDebounce';
 const Search = () => {
 
     const [searchTerm, setSearchTerm] = useSearchDebounce(100);
-    const { restaurantList,  setRestaurantList, originalRestaurantList } = useRestaurantContext();
+    const { restaurantList, setRestaurantList, originalRestaurantList } = useRestaurantContext();
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
@@ -46,7 +46,7 @@ const Search = () => {
             <input type='text' placeholder='Search Resturant or Dish'
                 value={searchTerm} onChange={handleChange} className='ml-4 search' />
             <SearchDropDown searchTerm={searchTerm} restaurantList={restaurantList}
-             setSearchTerm={setSearchTerm}/>
+                setSearchTerm={setSearchTerm} />
         </Fragment>
     );
 };
