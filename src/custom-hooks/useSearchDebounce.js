@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
 
-const useSearchDebounce = (delay = 350) => {
+const useSearchDebounce = (delay) => {
     const [debouncedSearch, setDebouncedSearch] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
 

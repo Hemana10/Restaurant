@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 
 import useRestaurantContext from '../../../custom-hooks/useRestaurantContext';
 import SearchDropDown from './SearchDropDown';
@@ -6,8 +6,8 @@ import useSearchDebounce from '../../../custom-hooks/useSearchDebounce';
 
 const Search = () => {
 
-    const [searchTerm, setSearchTerm] = useSearchDebounce();
-    const {restaurantList,  setRestaurantList, originalRestaurantList } = useRestaurantContext();
+    const [searchTerm, setSearchTerm] = useSearchDebounce(100);
+    const { restaurantList,  setRestaurantList, originalRestaurantList } = useRestaurantContext();
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);

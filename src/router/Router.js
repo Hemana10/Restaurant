@@ -2,11 +2,12 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 
 import NotFound from '../shared/NotFound';
+// import RestaurantDetailsWrapper from '../components/restaurant/RestaurantDetailsWrapper';
 
 const Home = lazy(() => import('../components/home/Home'));
 const AboutUs = lazy(() => import('../components/header/AboutUs'));
 const ContactUs = lazy(() => import('../components/header/ContactUs'));
-const RestaurantDetails = lazy(() => import('../components/restaurant/RestaurantDetails'));
+const RestaurantDetailsWrapper = lazy(() => import('../components/restaurant/RestaurantDetailsWrapper'));
 
 function Router() {
 
@@ -21,7 +22,7 @@ function Router() {
                 element={<Suspense><ContactUs /></Suspense>} />
             <Route path="/restaurants/:id"
                 element={
-                <Suspense><RestaurantDetails /></Suspense>}/>
+                <Suspense><RestaurantDetailsWrapper /></Suspense>}/>
             <Route path='/' element={<Navigate to='/home' />} />
             <Route path='*' element={<NotFound />} />
         </Routes>
