@@ -24,7 +24,7 @@ const RestaurantFooterSection = ({ menuDetails }) => {
     const renderMenuDetails = menuDetails.map(menuItem => {
         const { title, availableItemsCount } = menuItem || {};
         return (
-            <div className='p-1 hover:cursor-pointer grid grid-cols-6' key={`${title}${availableItemsCount}`}
+            <div className='p-2 hover:cursor-pointer grid grid-cols-6' key={`${title}${availableItemsCount}`}
                 onClick={() => handleMenuItemClick(title)}>
                 <div className='col-span-5'>{title}</div>
                 <div className='col-span-1 flex justify-end items-center'>{availableItemsCount}</div>
