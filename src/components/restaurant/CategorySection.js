@@ -9,23 +9,24 @@ const CategorySection = ({ categoryTitle, categoryList, itemAccordionView }) => 
         const { title, itemCards } = category;
         return (
             <Fragment key={title}>
-                <Accordion title={`${title} (${itemCards.length})`}
+                <Accordion id={title} title={`${title} (${itemCards.length})`}
                     open={itemAccordionView ? true : false}
                     titleClass={itemAccordionView ? 'text-purplelake text-lg font-bold' : 'text-purplelake font-semibold'}>
-                    <ItemSection itemsList={itemCards}/>
+                    <ItemSection itemsList={itemCards} />
                 </Accordion>
-                {itemAccordionView ? <hr className="p-1 bg-violet-100 mb-3"/> : (index !== categoryList.length - 1) && <hr className='p-1'/>}
+                {itemAccordionView ? <hr className="p-1 bg-violet-100 mb-3" /> : (index !== categoryList.length - 1) && <hr className='p-1' />}
             </Fragment>
         );
     });
 
     return (
         <div>
-            {!itemAccordionView && <div className="text-purplelake text-lg font-bold py-2">
+            {!itemAccordionView && <div id={categoryTitle}
+                className="text-purplelake text-lg font-bold py-2">
                 {categoryTitle}
             </div>}
             {renderCategoryList}
-            {!itemAccordionView && <hr className="p-1 bg-violet-100 mb-3"/>}
+            {!itemAccordionView && <hr className="p-1 bg-violet-100 mb-3" />}
         </div>
     );
 };

@@ -13,6 +13,7 @@ const DisplayRestaurantDetails = () => {
     const { restaurantDetails, loading, error } = useSelector((state) => {
         return state.restaurantDetails;
     });
+    const menuDetails = [];
 
     const displayError = <ErrorPage error={error.errorMsg} />;
 
@@ -25,15 +26,17 @@ const DisplayRestaurantDetails = () => {
     );
 
     const menuSection = restaurantDetails?.menuDetails?.map((menuItem, index) => {
-        const { title, categories } = menuItem.card.card || {};
+        const { title, categories, itemCards } = menuItem.card.card || {};
         if (menuItem.card.card['@type'].includes('ItemCategory')) {
             const itemAccordionView = !menuItem.card.card['@type'].includes('NestedItemCategory');
+            menuDetails.push({ title, availableItemsCount: itemAccordionView ? itemCards?.length : categories?.length });
             return (
                 <CategorySection key={`${title}${index}`} categoryTitle={title} categoryList={itemAccordionView ? [menuItem.card.card] : categories}
                     itemAccordionView={itemAccordionView} />
             );
         }
     });
+    console.log(menuDetails);
 
     const displayRestaurantDetails = (
         <div className='grid grid-cols-8 mt-6'>
@@ -59,7 +62,7 @@ const DisplayRestaurantDetails = () => {
     return (
         <Fragment>
             {displayDetails}
-            <RestaurantFooterSection />
+            <RestaurantFooterSection menuDetails={menuDetails} />
             <BackToTop />
         </Fragment>
     );
