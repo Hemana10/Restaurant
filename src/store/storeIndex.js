@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { setRestaurantDetails, setErrorState, setLoadingState, restaurantReducer } from './slices/restaurantSlice';
+import { setRestaurantDetails, setErrorState, setLoadingState,
+    restaurantReducer, updateItemList } from './slices/restaurantSlice';
 
 const store = configureStore({
     reducer: {
@@ -8,4 +9,10 @@ const store = configureStore({
     }
 });
 
-export { store, setRestaurantDetails, setErrorState, setLoadingState };
+export { 
+    store, 
+    setRestaurantDetails, 
+    setErrorState, 
+    setLoadingState, 
+    updateItemList 
+};

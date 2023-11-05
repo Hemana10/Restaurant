@@ -34,7 +34,6 @@ class AboutUs extends React.Component {
                         }
                     }
                 });
-                console.log('Error', response.status);
             }
         } catch (err) {
             this.setState((prevState) => {
@@ -45,7 +44,6 @@ class AboutUs extends React.Component {
                     }
                 }
             });
-            console.log('Something went wrong, please try later');
         }
 
     }

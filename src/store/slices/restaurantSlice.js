@@ -21,9 +21,20 @@ const restaurantSlice = createSlice({
         },
         setLoadingState(state, action) {
             state.loading = action;
+        },
+        updateItemList(state, {payload: { menuIndex, categoryIndex, itemIndex, quantity }}) {
+            if(categoryIndex) {
+                state.restaurantDetails.menuDetails[menuIndex].card.card.categories[categoryIndex].itemCards[itemIndex].quantity = quantity;
+            } else {
+                state.restaurantDetails.menuDetails[menuIndex].card.card.itemCards[itemIndex].quantity = quantity;
+            }
         }
     }
 });
 
-export const { setRestaurantDetails, setErrorState, setLoadingState } = restaurantSlice.actions;
+export const { 
+    setRestaurantDetails,
+    setErrorState, 
+    setLoadingState,
+    updateItemList } = restaurantSlice.actions;
 export const restaurantReducer = restaurantSlice.reducer;

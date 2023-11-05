@@ -34,8 +34,9 @@ const RestaurantDetails = ({ id }) => {
     // const fetchCallback = useCallback(fetchData, [id, dispatch, extractRestaurantDetails]);
     // const fetchDataMemo = useMemo(() => fetchData, [id]);
 
-    const extractRestaurantDetails = (response) => {
-        const menuDetails = response.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards;
+    const extractRestaurantDetails = async (response) => {
+        const menuDetails = await modifyMenuDetails(response.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards);
+        console.log(menuDetails);
         const offerDetails = response.data.cards[1].card.card.gridElements.infoWithStyle.offers;
         const restaurantInfo = response.data.cards[0].card.card.info;
         dispatch(setRestaurantDetails({
@@ -43,6 +44,20 @@ const RestaurantDetails = ({ id }) => {
             offerDetails,
             menuDetails
         }));
+    };
+
+    const modifyMenuDetails = (menuDetails) => {
+        return menuDetails?.map(menuItem => {
+            if(menuItem.card.card['@type'].includes('NestedItemCategory')) {
+                menuItem.card.card.categories = menuItem.card.card.categories.map(category => {
+                        category.itemCards = category.itemCards.map(v => ({...v, quantity: 0}));
+                        return category;
+                    });
+            } else if (menuItem.card.card['@type'].includes('ItemCategory')) {
+                menuItem.card.card.itemCards = menuItem.card.card.itemCards?.map(v => ({...v, quantity: 0}))
+            } 
+            return menuItem;
+        });
     };
 
     return (

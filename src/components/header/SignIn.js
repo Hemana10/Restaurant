@@ -8,7 +8,6 @@ function SignIn() {
     const signIn = async () => {
         try {
             const res = await signInWithGoogle();
-            console.log(res);
             setIsAuthenticated(true);
         } catch (error) {
             console.log(error);

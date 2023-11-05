@@ -18,7 +18,6 @@ const Search = () => {
     }, [searchTerm]);
 
     const getSearchResults = () => {
-        console.log('computing search results...');
         const searchResultsList = originalRestaurantList.current?.reduce((searchResultsList, restaurant) => {
             for (const item in restaurant.info) {
                 if ((item === 'name' || item === 'cuisines')) {
