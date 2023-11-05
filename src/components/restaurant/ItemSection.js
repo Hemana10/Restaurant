@@ -34,23 +34,29 @@ const ItemSection = ({ itemsList, menuIndex, categoryIndex, itemAccordionView })
                         <div className="relative">
                             <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${imageId}`}
                                 alt={name} className="h-44 w-48 rounded" />
-                            <div className="absolute bottom-neg-9p right-30p">
+                            <div className="absolute bottom-neg-9p right-[21%]">
                                 <div className="text-purplelake bg-purple-200 p-2 rounded hover:shadow-2xl shadow-violet-90 hover:bg-purple-300">
                                 {   quantity ?
-                                    <div className="flex items-center">
+                                    <div className="flex items-center w-[83.142px] h-[28px]">
                                         <span className="text-lg hover:cursor-pointer"
                                          onClick={() => updateItemQuantity(--quantity)}>
                                             <img src={minus} alt="minus icon"
                                                 className="h-4 w-4"/>
                                          </span>
                                         <span className="px-4 text-lg">{quantity}</span>
-                                        <span className="text-lg hover:cursor-pointer"
+                                        <span className="hover:cursor-pointer"
                                             onClick={() => updateItemQuantity(++quantity)}>
                                                 <img src={plus} alt="plus icon"
-                                                 className="h-4 w-4"/>
+                                                 className={`h-4 w-4 ${quantity<10 ? 'ml-2' : ''}`}/>
                                             </span>
                                     </div> :
-                                    <div className="hover:cursor-pointer" onClick={() => updateItemQuantity(++quantity)}>ADD +</div>
+                                    <div className="hover:cursor-pointer w-[83.142px] h-[28px] flex items-center" onClick={() => updateItemQuantity(++quantity)}>
+                                        <span>ADD</span>
+                                        <span>                                                
+                                            <img src={plus} alt="plus icon"
+                                                className="h-4 w-4 ml-[30px]" />
+                                        </span>
+                                    </div>
                                 }
                                 </div>
                             </div>
