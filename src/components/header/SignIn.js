@@ -22,9 +22,9 @@ function SignIn() {
             .catch(err => console.log(err));
     }
 
-    const signInBtn = <button onClick={signIn} className='px-3 login-with-google-btn'>Sign In</button>;
+    const signInBtn = <button onClick={signIn} className='px-3 ml-4 login-with-google-btn font-bold'>SIGN IN</button>;
 
-    const signOutBtn = <button onClick={signOut} className='px-3 login-with-google-btn'>Sign Out</button>;
+    const signOutBtn = <button onClick={signOut} className='px-3 ml-4 login-with-google-btn font-bold'>SIGN OUT</button>;
 
     return (
         <Fragment>

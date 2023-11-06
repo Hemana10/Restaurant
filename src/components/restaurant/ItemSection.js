@@ -9,7 +9,7 @@ const ItemSection = ({ itemsList, menuIndex, categoryIndex, itemAccordionView })
     const dispatch = useDispatch();
 
     const renderItemList = itemsList.map((item, index) => {
-        const { name, description, price, imageId } = item?.card?.info || {};
+        const { id, name, description, price, imageId } = item?.card?.info || {};
         let quantity = item?.quantity;
         // inStock, isVeg
 
@@ -18,7 +18,9 @@ const ItemSection = ({ itemsList, menuIndex, categoryIndex, itemAccordionView })
                 menuIndex,
                 categoryIndex: itemAccordionView ? null : categoryIndex,
                 itemIndex: index,
-                quantity: quantity
+                quantity,
+                item,
+                id
             }));
         }
 
@@ -43,18 +45,19 @@ const ItemSection = ({ itemsList, menuIndex, categoryIndex, itemAccordionView })
                                             <img src={minus} alt="minus icon"
                                                 className="h-4 w-4"/>
                                          </span>
-                                        <span className="px-4 text-lg">{quantity}</span>
+                                        <span className={`px-4 text-lg font-semibold 
+                                            ${quantity<10 ? 'pl-[22px]' : ''}`}>{quantity}</span>
                                         <span className="hover:cursor-pointer"
                                             onClick={() => updateItemQuantity(++quantity)}>
                                                 <img src={plus} alt="plus icon"
                                                  className={`h-4 w-4 ${quantity<10 ? 'ml-2' : ''}`}/>
                                             </span>
                                     </div> :
-                                    <div className="hover:cursor-pointer w-[83.142px] h-[28px] flex items-center" onClick={() => updateItemQuantity(++quantity)}>
-                                        <span>ADD</span>
+                                    <div className="hover:cursor-pointer w-[83.142px] h-[28px] flex items-center justify-center" onClick={() => updateItemQuantity(++quantity)}>
+                                        <span className="font-semibold">ADD</span>
                                         <span>                                                
                                             <img src={plus} alt="plus icon"
-                                                className="h-4 w-4 ml-[30px]" />
+                                                className="h-4 w-4 ml-[5px]" />
                                         </span>
                                     </div>
                                 }

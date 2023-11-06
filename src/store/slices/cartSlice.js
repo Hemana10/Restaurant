@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { updateItemList } from '../actions';
+
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
@@ -9,6 +11,18 @@ const cartSlice = createSlice({
         setCartList(state, action) {
             state.cartList.push(...action.payload);
         }
+    },
+    extraReducers(builder) {
+        builder.addCase(updateItemList, (state, {payload: { item, quantity, id }}) => {
+            const index = state.cartList.findIndex(cartItem => cartItem.card.info.id === id);
+            if(quantity === 1) {
+                state.cartList.push({...item, quantity});
+            } else if(quantity === 0) {
+                state.cartList.splice(index, 1);
+            } else {
+                state.cartList[index] = {...item, quantity};
+            }
+        })
     }
 });
 

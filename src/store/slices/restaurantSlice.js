@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+import { updateItemList } from '../actions';
+
 const restaurantSlice = createSlice({
     name: 'restaurant',
     initialState: {
@@ -21,20 +23,22 @@ const restaurantSlice = createSlice({
         },
         setLoadingState(state, action) {
             state.loading = action;
-        },
-        updateItemList(state, {payload: { menuIndex, categoryIndex, itemIndex, quantity }}) {
+        }
+    },
+    extraReducers(builder) {
+        builder.addCase(updateItemList, (state, {payload: { menuIndex, categoryIndex, itemIndex, quantity }}) => {
             if(categoryIndex) {
                 state.restaurantDetails.menuDetails[menuIndex].card.card.categories[categoryIndex].itemCards[itemIndex].quantity = quantity;
             } else {
                 state.restaurantDetails.menuDetails[menuIndex].card.card.itemCards[itemIndex].quantity = quantity;
             }
-        }
+        })
     }
 });
 
 export const { 
     setRestaurantDetails,
     setErrorState, 
-    setLoadingState,
-    updateItemList } = restaurantSlice.actions;
+    setLoadingState
+} = restaurantSlice.actions;
 export const restaurantReducer = restaurantSlice.reducer;

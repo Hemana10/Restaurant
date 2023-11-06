@@ -47,7 +47,7 @@ const RestaurantFooterSection = ({ menuDetails }) => {
 
             <div className="fixed inset-x-0 bottom-0 z-10 pointer-events-none">
                 <div className="h-16 z-[1] relative ">
-                    <button className="rounded-3xl bg-purple-800 text-sm absolute top-0 w-[9.375rem] h-10 pointer-events-auto flex left-[550px] items-center justify-center"
+                    <button className="rounded-3xl bg-fuchsia-950 text-sm absolute top-0 w-[9.375rem] h-10 pointer-events-auto flex left-[550px] items-center justify-center"
                         onClick={handleOpen}>
                         <span>
                             <img src={cutleryIcon} alt='cutlery-Icon' className='h-4 w-4 bg-transparent mr-1' />

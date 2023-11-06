@@ -36,7 +36,6 @@ const RestaurantDetails = ({ id }) => {
 
     const extractRestaurantDetails = async (response) => {
         const menuDetails = await modifyMenuDetails(response.data.cards[2].groupedCard.cardGroupMap.REGULAR.cards);
-        console.log(menuDetails);
         const offerDetails = response.data.cards[1].card.card.gridElements.infoWithStyle.offers;
         const restaurantInfo = response.data.cards[0].card.card.info;
         dispatch(setRestaurantDetails({
