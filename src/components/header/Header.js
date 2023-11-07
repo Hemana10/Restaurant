@@ -21,40 +21,43 @@ function Header() {
         <Fragment>
             <div className='grid grid-cols-12 mt-1 '>
                 <div className='col-span-6 flex items-center'>
-                    <img src={logo} alt='logo' className='h-16 hover:cursor-pointer' onClick={() => {navigate('/home')}}/>
+                    <img src={logo} alt='logo' className='h-16 hover:cursor-pointer' onClick={() => { navigate('/home') }} />
                     <Search />
                 </div>
                 <div className='col-span-6 items-center justify-end flex text-purplelake text-bold text-base'>
                     <Link className='px-3'
                         to="/home" >
-                            <img src={homeIcon} alt="home icon" className='h-8 w-8 ml-6' />
+                        <img src={homeIcon} alt="home icon" className='h-8 w-8 ml-6' />
                     </Link>
                     <Link className='px-3'>
-                        <div onMouseLeave={() => setShowPopup(false)}>
-                            <div onMouseOver={() => setShowPopup(true)}>
+                        <div onMouseLeave={() => setShowPopup(false)}
+                            onMouseOver={() => setShowPopup(true)}>
+                            <div>
                                 <img src={cartIcon} alt="cart icon" className='h-8 w-8 relative ml-6' />
-                                { cartItemsCount ? 
+                                {cartItemsCount ?
                                     <div className='rounded-[50%] top-[14px] right-[261px] w-[21px] h-[21px] text-white bg-red-600 absolute font-semibold'>
                                         <span className='text-xs flex items-center justify-center 
-                                        mt-[2.5px]'>{cartItemsCount > 9 ?  '9+' : cartItemsCount}</span>
+                                        mt-[2.5px]'>{cartItemsCount > 9 ? '9+' : cartItemsCount}</span>
                                     </div> : null
                                 }
                             </div>
-                            {showPopup ? 
-                                <div>
-                                    <img src={caratUp} alt='carat up' className='absolute w-[20px] h-[16px] top-[61px] right-[276px]'/>
+                            {showPopup ?
+                                <div onMouseLeave={() => setShowPopup(false)}
+                                    onMouseOver={() => setShowPopup(true)}>
+                                    <img src={caratUp} alt='carat up' className='absolute w-[20px] h-[16px] top-[43px] right-[276px]' />
                                     <CartPopUp />
-                                </div> 
-                                : null}
+                                </div>
+                                : null
+                            }
                         </div>
                     </Link>
                     <Link className='px-3'
                         to="/contact" >
-                            <img src={contactUsIcon} alt="contact us icon" className='h-8 w-8 ml-6' />
+                        <img src={contactUsIcon} alt="contact us icon" className='h-8 w-8 ml-6' />
                     </Link>
                     <Link className='px-3'
                         to="/about" >
-                            <img src={aboutUsIcon} alt="about us icon" className='h-8 w-8 ml-6' />
+                        <img src={aboutUsIcon} alt="about us icon" className='h-8 w-8 ml-6' />
                     </Link>
                     <SignIn />
                 </div>

@@ -7,7 +7,7 @@ const RestaurantDetailsWrapper = () => {
     const { id } = useParams();
 
     return (
-        <RestaurantDetails id={id}/>
+        <RestaurantDetails id={id} />
     );
 }
 
