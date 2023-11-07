@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { updateItemList } from '../../store/storeIndex';
 import plus from '../../assets/images/plus-icon.svg';
@@ -7,10 +7,14 @@ import minus from '../../assets/images/minus-icon.svg';
 
 const ItemSection = ({ itemsList, menuIndex, categoryIndex, itemAccordionView }) => {
     const dispatch = useDispatch();
+    const cartList = useSelector(state => state.cartDetails.cartList);
 
     const renderItemList = itemsList.map((item, index) => {
         const { id, name, description, price, defaultPrice, imageId } = item?.card?.info || {};
-        let quantity = item?.quantity;
+
+        const cartIndex = cartList.findIndex(v => v.card?.info?.id === id);
+
+        let quantity = cartIndex > -1 ? cartList[cartIndex]?.quantity : item?.quantity;
         // inStock, isVeg
 
         const updateItemQuantity = (quantity) => {
@@ -32,11 +36,12 @@ const ItemSection = ({ itemsList, menuIndex, categoryIndex, itemAccordionView })
                         <span className="mb-3 text-sm">₹ {(price ? price : defaultPrice) / 100}</span>
                         <span className="text-gray-400 text-sm">{description}</span>
                     </div>
-                    <div className="col-span-2 flex items-center justify-end mr-5 mb-3">
+                    <div className={`col-span-2 flex items-center  mb-3 ${imageId ? 'justify-end mr-5' : 'justify-center ml-4'}`}>
                         <div className="relative">
-                            <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${imageId}`}
-                                alt={name} className="h-44 w-48 rounded" />
-                            <div className="absolute bottom-neg-9p right-[21%]">
+
+                            {imageId ? <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${imageId}`} alt={name} className="h-44 w-48 rounded" /> : null}
+
+                            <div className={imageId ? 'absolute bottom-neg-9p right-[21%]' : ''}>
                                 <div className="text-purplelake bg-purple-200 p-2 rounded hover:shadow-2xl shadow-violet-90 hover:bg-purple-300">
                                     {quantity ?
                                         <div className="flex items-center w-[83.142px] h-[28px]">

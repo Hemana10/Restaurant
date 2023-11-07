@@ -11,7 +11,7 @@ const RestaurantDetails = ({ id }) => {
     // const { id } = useParams();
     const dispatch = useDispatch();
 
-    
+
     useEffect(() => {
         fetchData();
     }, [id]);
@@ -47,14 +47,17 @@ const RestaurantDetails = ({ id }) => {
 
     const modifyMenuDetails = (menuDetails) => {
         return menuDetails?.map(menuItem => {
-            if(menuItem.card.card['@type'].includes('NestedItemCategory')) {
+            if (menuItem.card.card['@type'].includes('NestedItemCategory')) {
                 menuItem.card.card.categories = menuItem.card.card.categories.map(category => {
-                        category.itemCards = category.itemCards.map(v => ({...v, quantity: 0}));
-                        return category;
+                    category.itemCards = category.itemCards.map(v => {
+
+                        return { ...v, quantity: 0 }
                     });
+                    return category;
+                });
             } else if (menuItem.card.card['@type'].includes('ItemCategory')) {
-                menuItem.card.card.itemCards = menuItem.card.card.itemCards?.map(v => ({...v, quantity: 0}))
-            } 
+                menuItem.card.card.itemCards = menuItem.card.card.itemCards?.map(v => ({ ...v, quantity: 0 }))
+            }
             return menuItem;
         });
     };

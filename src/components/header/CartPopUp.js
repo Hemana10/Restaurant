@@ -5,20 +5,25 @@ const CartPopUp = () => {
     let subTotal = 0;
 
     const renderCartList = cartList.map(item => {
-        const { id, name, price, imageId } = item?.card?.info || {};
+        const { id, name, price, defaultPrice, imageId } = item?.card?.info || {};
         let quantity = item?.quantity;
 
-        subTotal += (price/100) * quantity;
+        subTotal += (((price ? price : defaultPrice) / 100) * quantity);
+        subTotal = +subTotal.toFixed(2);
 
         return (
-            <div className="flex items-center py-2" key={id}>
-                <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${imageId}`}
-                    alt={name} className="h-[50px] w-[50px] mr-2" />
-                    <span className="truncate font-semibold" title={`${quantity} x ${ name }`}>{quantity} x { name }</span>
+            <div className="flex justify-between items-center py-2" key={id}>
+                <div className="flex items-center">
+                    <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${imageId}`}
+                        alt={name} className="h-[50px] w-[50px] mr-2" />
+                    <span className="truncate font-semibold" title={`${quantity} x ${name}`}>{quantity} x {name}</span>
+                </div>
+                <div className="flex items-center">
                     <span className="text-sm flex ml-2 ">
-                        <span>₹ </span>
-                        <span>{price / 100}</span>
+                        <span className="pr-1">₹</span>
+                        <span>{(price ? price : defaultPrice) / 100}</span>
                     </span>
+                </div>
             </div>
         );
     })
