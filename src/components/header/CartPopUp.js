@@ -16,7 +16,7 @@ const CartPopUp = () => {
                 <div className="flex items-center">
                     <img src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_208,h_208,c_fit/${imageId}`}
                         alt={name} className="h-[50px] w-[50px] mr-2" />
-                    <span className="truncate font-semibold" title={`${quantity} x ${name}`}>{quantity} x {name}</span>
+                    <div className="truncate font-semibold w-[122.81px]" title={`${quantity} x ${name}`}>{quantity} x {name}</div>
                 </div>
                 <div className="flex items-center">
                     <span className="text-sm flex ml-2 ">
@@ -29,17 +29,19 @@ const CartPopUp = () => {
     })
 
     return (
-        <div className='cart-popup px-[15px] py-[26px] text-black text-sm'>
-            {renderCartList}
-            <div className="flex justify-between pt-3">
-                <div className="flex flex-col">
-                    <span className="font-semibold">Sub total</span>
-                    <span className="text-gray-500">Extra charges may apply</span>
+        <div className='cart-popup text-black text-sm'>
+            <div className="mx-[15px] my-[26px]">
+                {renderCartList}
+                <div className="flex justify-between pt-3">
+                    <div className="flex flex-col">
+                        <span className="font-semibold">Sub total</span>
+                        <span className="text-gray-500">Extra charges may apply</span>
+                    </div>
+                    <span className="flex items-center ">₹ {subTotal}</span>
                 </div>
-                <span className="flex items-center ">₹ {subTotal}</span>
-            </div>
-            <div className="flex justify-center pt-5">
-                <button className="bg-fuchsia-950 w-[250px] text-white font-semibold p-3">CHECKOUT</button>
+                <div className="flex justify-center pt-5">
+                    <button className="bg-fuchsia-950 w-[250px] text-white font-semibold p-3">CHECKOUT</button>
+                </div>
             </div>
         </div>
     );
