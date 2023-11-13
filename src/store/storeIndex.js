@@ -3,7 +3,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setRestaurantDetails, setErrorState, setLoadingState,
     restaurantReducer } from './slices/restaurantSlice';
 import { cartReducer } from './slices/cartSlice';
-import { userReducer, setAuthState } from "./slices/userSlice";
+import { userReducer, setAuthDetails } from "./slices/userSlice";
 import { updateItemList } from './actions';
 
 const store = configureStore({
@@ -20,5 +20,5 @@ export {
     setErrorState, 
     setLoadingState, 
     updateItemList,
-    setAuthState
+    setAuthDetails
 };

@@ -1,14 +1,18 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import { signInWithGoogle, gooleSignOut }
     from '../../firebase/firebase-utility';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAuthDetails } from '../../store/storeIndex';
 
 function SignIn() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const { userDetails } = useSelector(state => state.authUserInfo );
+    const dispatch = useDispatch();
 
     const signIn = async () => {
         try {
             const res = await signInWithGoogle();
-            setIsAuthenticated(true);
+            console.log(res);
+            // setIsAuthenticated(true);
         } catch (error) {
             console.log(error);
         }
@@ -17,7 +21,7 @@ function SignIn() {
     const signOut = () => {
         gooleSignOut()
             .then(res => {
-                setIsAuthenticated(false);
+                // setIsAuthenticated(false);
             })
             .catch(err => console.log(err));
     }
@@ -28,7 +32,8 @@ function SignIn() {
 
     return (
         <Fragment>
-            {isAuthenticated ? signOutBtn : signInBtn}
+            {/* {isAuthenticated ? signOutBtn : signInBtn} */}
+            {signInBtn}
         </Fragment>
     );
 

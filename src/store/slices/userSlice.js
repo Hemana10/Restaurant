@@ -4,16 +4,17 @@ const userSlice = createSlice({
     name: 'user',
     initialState: {
         isAuth: false,
-        userDeatils: {}
+        userDetails: {}
     },
     reducers: {
-        setAuthState(state, action) {
-           state.isAuth = action; 
+        setAuthDetails(state, {payload: {authState, userDetails}}) {
+           state.isAuth = authState;
+           state.userDetails = userDetails;
         }
     }
 });
 
 export const { 
-    setAuthState 
+    setAuthDetails 
 } = userSlice.actions;
 export const userReducer = userSlice.reducer;

@@ -41,7 +41,7 @@ function Header() {
                                     </div> : null
                                 }
                             </div>
-                            {showPopup ?
+                            {showPopup && cartItemsCount ?
                                 <div onMouseLeave={() => setShowPopup(false)}
                                     onMouseOver={() => setShowPopup(true)}>
                                     <img src={caratUp} alt='carat up' className='absolute w-[20px] h-[16px] top-[43px] right-[276px]' />
