@@ -8,6 +8,7 @@ import App from './App';
 import { store } from './store/storeIndex';
 
 const el = document.getElementById('root');
+// to allow SPA usuage
 const root = createRoot(el);
 
 root.render(
