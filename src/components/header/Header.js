@@ -15,7 +15,10 @@ import caratUp from '../../assets/images/up-carat-icon.svg';
 function Header() {
     const navigate = useNavigate();
     const [showPopup, setShowPopup] = useState(false);
-    const cartItemsCount = useSelector(state => state.cartDetails.cartList.length);
+    const {cartItemsCount, userInfo} = useSelector(state => ({
+        cartItemsCount: state.cartDetails.cartList.length,
+        userInfo: state.authUserInfo.userDetails
+    }));
 
     return (
         <Fragment>
@@ -35,7 +38,7 @@ function Header() {
                             <div>
                                 <img src={cartIcon} alt="cart icon" className='h-8 w-8 relative ml-6' />
                                 {cartItemsCount ?
-                                    <div className='rounded-[50%] top-[14px] right-[261px] w-[21px] h-[21px] text-white bg-red-600 absolute font-semibold'>
+                                    <div className={`rounded-[50%] top-[14px] ${userInfo ? 'right-[331px]' : 'right-[261px]'} w-[21px] h-[21px] text-white bg-red-600 absolute font-semibold`}>
                                         <span className='text-xs flex items-center justify-center 
                                         mt-[2.5px]'>{cartItemsCount > 9 ? '9+' : cartItemsCount}</span>
                                     </div> : null
@@ -44,7 +47,7 @@ function Header() {
                             {showPopup && cartItemsCount ?
                                 <div onMouseLeave={() => setShowPopup(false)}
                                     onMouseOver={() => setShowPopup(true)}>
-                                    <img src={caratUp} alt='carat up' className='absolute w-[20px] h-[16px] top-[43px] right-[276px]' />
+                                    <img src={caratUp} alt='carat up' className={`absolute w-[20px] h-[16px] top-[43px] ${userInfo ? 'right-[342.5px]' : 'right-[276px]'}`} />
                                     <CartPopUp />
                                 </div>
                                 : null
