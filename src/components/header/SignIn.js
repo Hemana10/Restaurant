@@ -12,8 +12,6 @@ function SignIn() {
         try {
             const res = await signInWithGoogle();
             dispatch(setAuthDetails(res._tokenResponse));
-            console.log(res);
-            // setIsAuthenticated(true);
         } catch (error) {
             console.log(error);
         }
