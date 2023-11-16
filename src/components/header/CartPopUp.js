@@ -1,7 +1,10 @@
 import { useSelector } from "react-redux";
 
 const CartPopUp = () => {
-    const cartList = useSelector(state => state.cartDetails.cartList);
+    const { cartList, userInfo } = useSelector(state => ({
+        cartList: state.cartDetails.cartList,
+        userInfo: state.authUserInfo.userDetails
+    }));
     let subTotal = 0;
 
     const renderCartList = cartList.map(item => {
@@ -29,7 +32,7 @@ const CartPopUp = () => {
     })
 
     return (
-        <div className='cart-popup text-black text-sm'>
+        <div className={`cart-popup text-black text-sm ${userInfo ? 'right-[200px]' : 'right-[128px]'}`}>
             <div className="mx-[15px] my-[26px]">
                 {renderCartList}
                 <div className="flex justify-between pt-3">
