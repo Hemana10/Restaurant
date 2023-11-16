@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { lazy, Suspense, ErrorBoundary } from 'react';
+import { lazy, Suspense } from 'react';
 
 import NotFound from '../shared/NotFound';
 import { ShimmerPostDetails } from "react-shimmer-effects";
@@ -9,6 +9,7 @@ const Home = lazy(() => import('../components/home/Home'));
 const AboutUs = lazy(() => import('../components/header/AboutUs'));
 const ContactUs = lazy(() => import('../components/header/ContactUs'));
 const RestaurantDetailsWrapper = lazy(() => import('../components/restaurant/RestaurantDetailsWrapper'));
+const Cart = lazy(() => import('../components/cart/Cart'));
 
 function Router() {
 
@@ -17,6 +18,7 @@ function Router() {
         <Routes>
             <Route path="/home"
                 element={<Suspense><Home /></Suspense>} />
+            <Route path='/cart' element={<Suspense><Cart /></Suspense>} />
             <Route path="/about"
                 element={<Suspense><AboutUs /></Suspense>} />
             <Route path="/contact"
