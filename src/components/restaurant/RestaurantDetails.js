@@ -17,11 +17,26 @@ const RestaurantDetails = ({ id }) => {
     }, [id]);
 
     const fetchData = async () => {
+        // Live data fetch from swiggy api
+        // try {
+        //     dispatch(setLoadingState(true));
+        //     let response = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.8758713&lng=77.66363439999999&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`);
+        //     if (response.ok) {
+        //         response = await response.json();
+        //         extractRestaurantDetails(response);
+        //     } else {
+        //         dispatch(setErrorState({ errorStatus: true, errorMsg: `Error ${response.status}` }));
+        //     }
+        // } catch (error) {
+        //     dispatch(setErrorState({ errorStatus: true, errorMsg: 'Something went wrong, please try later' }));
+        // }
+
+        // Firebase DB data
         try {
             dispatch(setLoadingState(true));
-            let response = await fetch(`https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.8758713&lng=77.66363439999999&restaurantId=${id}&catalog_qa=undefined&submitAction=ENTER`);
-            if (response.ok) {
-                response = await response.json();
+            let response = await fetch(`https://auth-1a4d7-default-rtdb.firebaseio.com/restaurantDetails/${id}.json`);
+            response = await response.json();
+            if (response) {
                 extractRestaurantDetails(response);
             } else {
                 dispatch(setErrorState({ errorStatus: true, errorMsg: `Error ${response.status}` }));
