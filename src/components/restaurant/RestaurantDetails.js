@@ -36,13 +36,13 @@ const RestaurantDetails = ({ id }) => {
             dispatch(setLoadingState(true));
             let response = await fetch(`https://auth-1a4d7-default-rtdb.firebaseio.com/restaurantDetails/${id}.json`);
             response = await response.json();
-            if (response) {
+            if (!response.error) {
                 extractRestaurantDetails(response);
             } else {
-                dispatch(setErrorState({ errorStatus: true, errorMsg: `Error ${response.status}` }));
+                dispatch(setErrorState({ errorStatus: true, errorMsg: `${response.error}`}));
             }
         } catch (error) {
-            dispatch(setErrorState({ errorStatus: true, errorMsg: 'Something went wrong, please try later' }));
+            dispatch(setErrorState({ errorStatus: true, errorMsg: 'Something went wrong, please try later'}));
         }
     }
 

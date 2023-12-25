@@ -30,10 +30,10 @@ const Provider = ({ children }) => {
         // Firebase DB data
         try {
             let res = await fetch('https://auth-1a4d7-default-rtdb.firebaseio.com/restaurants.json');
-            const restaurants = await res.json();
-            if (restaurants) { 
-                setRestaurantList(restaurants);
-                originalRestaurantList.current = restaurants;
+            const data = await res.json();
+            if (!data.error) {
+                setRestaurantList(data);
+                originalRestaurantList.current = data;
             } else {
                 setError('Something went wrong, please try later');
             }
