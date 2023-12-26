@@ -1,15 +1,19 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 
 import useRestaurantContext from '../../../custom-hooks/useRestaurantContext';
 import SearchDropDown from './SearchDropDown';
-import useSearchDebounce from '../../../custom-hooks/useSearchDebounce';
+// import useSearchDebounce from '../../../custom-hooks/useSearchDebounce';
+import useDebounce from '../../../custom-hooks/useDebounce';
 
 const Search = () => {
 
-    const [searchTerm, setSearchTerm] = useSearchDebounce(100);
+    const [displaySearchTerm, setDisplaySearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useDebounce(5000);
     const { restaurantList, setRestaurantList, originalRestaurantList } = useRestaurantContext();
+    const count = useRef(-1);
 
     const handleChange = (event) => {
+        setDisplaySearchTerm(event.target.value);
         setSearchTerm(event.target.value);
     };
 
@@ -37,15 +41,17 @@ const Search = () => {
             }
             return searchResultsList;
         }, []);
-        setRestaurantList(searchTerm.length ? searchResultsList : originalRestaurantList.current);
+        ++count.current;
+        console.log('search carried out', count);
+        setRestaurantList(displaySearchTerm.length ? searchResultsList : originalRestaurantList.current);
     };
 
     return (
         <Fragment>
             <input type='text' placeholder='Search Resturant or Dish'
-                value={searchTerm} onChange={handleChange} className='ml-4 search' />
+                value={displaySearchTerm} onChange={handleChange} className='ml-4 search' />
             <SearchDropDown searchTerm={searchTerm} restaurantList={restaurantList}
-                setSearchTerm={setSearchTerm} />
+                setSearchTerm={setDisplaySearchTerm} />
         </Fragment>
     );
 };
