@@ -4,17 +4,19 @@ import useRestaurantContext from '../../../custom-hooks/useRestaurantContext';
 import SearchDropDown from './SearchDropDown';
 // import useSearchDebounce from '../../../custom-hooks/useSearchDebounce';
 import useDebounce from '../../../custom-hooks/useDebounce';
+import useSearchDebounce from '../../../custom-hooks/useSearchDebounce';
 
 const Search = () => {
 
     const [displaySearchTerm, setDisplaySearchTerm] = useState('');
-    const [searchTerm, setSearchTerm] = useDebounce(5000);
+    const [searchTerm, setSearchTerm] = useDebounce(500);
     const { restaurantList, setRestaurantList, originalRestaurantList } = useRestaurantContext();
     const count = useRef(-1);
+    const searchTimer = useRef();
 
     const handleChange = (event) => {
         setDisplaySearchTerm(event.target.value);
-        setSearchTerm(event.target.value);
+        searchTimer.current = setSearchTerm(searchTimer.current, event.target.value);
     };
 
     useEffect(() => {

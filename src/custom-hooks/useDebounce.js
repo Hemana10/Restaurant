@@ -4,13 +4,12 @@ function useDebounce(delay = 300) {
 
     const [state, setState] = useState('');
 
-    let timer;
-
-    function setDebounceState(data) {
+    function setDebounceState(timer, data) {
         clearTimeout(timer);
         timer = setTimeout(() => {
             setState(data);
         }, delay);
+        return timer;
     }
 
     return [state, setDebounceState];
