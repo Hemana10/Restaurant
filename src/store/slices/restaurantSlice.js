@@ -17,12 +17,12 @@ const restaurantSlice = createSlice({
             state.loading = false;
             state.restaurantDetails = action.payload;
         },
-        setErrorState(state, action) {
+        setErrorState(state, { payload }) {
             state.loading = false;
-            state.error = action;
+            state.error = payload;
         },
-        setLoadingState(state, action) {
-            state.loading = action;
+        setLoadingState(state, { payload }) {
+            state.loading = payload;
         }
     },
     extraReducers(builder) {

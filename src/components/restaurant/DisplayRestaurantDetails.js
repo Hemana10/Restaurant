@@ -61,7 +61,7 @@ const DisplayRestaurantDetails = () => {
     return (
         <Fragment>
             {displayDetails}
-            <RestaurantFooterSection menuDetails={menuDetails} />
+            {!error.errorStatus && <RestaurantFooterSection menuDetails={menuDetails} />}
             <BackToTop />
         </Fragment>
     );
