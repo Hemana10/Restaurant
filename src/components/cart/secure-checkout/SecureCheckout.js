@@ -1,7 +1,7 @@
-import PaymentStep from "./PaymentStep";
-import DeliveryAddressStep from './DeliveryAddressStep';
-import AccountLoginStep from './AccountLoginStep';
-import BillingDetails from './BillingDetails';
+import PaymentStep from "./payment-steps/PaymentStep";
+import DeliveryAddressStep from './payment-steps/DeliveryAddressStep';
+import AccountLoginStep from './payment-steps/AccountLoginStep';
+import BillingDetails from './billing-details/BillingDetails';
 import { useSelector } from "react-redux";
 
 const SecureCheckout = () => {
@@ -11,9 +11,9 @@ const SecureCheckout = () => {
         <>
             <div className='grid grid-cols-12 gap-10 pt-8 bg-purple-100 h-[100vh]'>
                 <div className='col-start-2 col-span-7'>
-                    <AccountLoginStep stepNumber={stepNumber}/>
-                    <DeliveryAddressStep stepNumber={stepNumber}/>
-                    <PaymentStep stepNumber={stepNumber}/>
+                    <AccountLoginStep className='pb-8' stepNumber={stepNumber}/>
+                    <DeliveryAddressStep className='pb-8' stepNumber={stepNumber}/>
+                    <PaymentStep className='pb-8' stepNumber={stepNumber}/>
                 </div>
                 <div className="col-span-3">
                     <BillingDetails/>

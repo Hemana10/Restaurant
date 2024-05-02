@@ -1,4 +1,6 @@
-const AccountLoginStep = ({ stepNumber }) => { 
+import StepRenderer from "./StepRenderer";
+
+const AccountLoginStep = ({ stepNumber, className }) => { 
 
     const activeStep = (
         <div className="h-[250px] bg-white pl-[40px] pt-[35px] pb-[39px]">
@@ -26,20 +28,12 @@ const AccountLoginStep = ({ stepNumber }) => {
         </div>
     );
 
-    const inActiveStep = (
-        <div className="h-[100px] bg-white pl-[40px] pt-[35px] pb-[39px]">
-            <div className="grid grid-cols-12">
-                <div className="flex flex-col col-span-12">
-                    <span className="text-2xl text-purplelake font-bold">Account</span>
-                </div>
-            </div>
-        </div>
-    );
-
-    const renderAccountLoginStep = stepNumber === 1 ? activeStep : inActiveStep;
-
     return (
-        <>{renderAccountLoginStep}</>
+        <div className={className}>
+            <StepRenderer stepName="Account" activeFlag={stepNumber === 1}>
+                { activeStep }
+            </StepRenderer>
+        </div>
     );
 };
 

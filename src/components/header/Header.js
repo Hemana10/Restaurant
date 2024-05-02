@@ -32,7 +32,7 @@ function Header() {
                         to="/home" >
                         <img src={homeIcon} alt="home icon" className='h-8 w-8 ml-6' />
                     </Link>
-                    <Link className='px-3' to="/cart">
+                    <Link className='px-3' to="/checkout">
                         <div onMouseLeave={() => setShowPopup(false)}
                             onMouseOver={() => setShowPopup(true)}>
                             <div>
